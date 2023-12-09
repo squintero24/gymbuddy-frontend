@@ -2,3 +2,34 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --primary-color: #153d77;
+  --secondary-color: #6c757d;
+  --white-color: #fff;
+  --success-color: #96e072;
+  --delete-color: #ea3546;
+  --default-color: #489fb5;
+  --background-color: #f2f2f2;
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: var(--success-color);
+  --mat-snack-bar-button-color: black;
+  --mdc-snackbar-supporting-text-color: black;
+}
+
+
+.error-snackbar {
+  --mdc-snackbar-container-color: var(--delete-color);
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+}
+
+
+.default-snackbar {
+  --mdc-snackbar-container-color: var(--default-color);
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color: white;
+}
+
