@@ -1,0 +1,36 @@
+/* src/app/user-info-modal/user-info-modal.component.scss */
+
+.modal-header {
+  background-color: #333fff;
+  color: white;
+  padding: 0px; /* Reduzco el padding para reducir la altura */
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+}

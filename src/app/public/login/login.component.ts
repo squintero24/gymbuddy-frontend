@@ -3,6 +3,7 @@ import {FormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../service/user/user.service";
 import {RolesDto} from "../../interface/roles.dto";
 import {UserDto} from "../../interface/user.dto";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit{
 
   }
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit{
             const roles = res.roles?.map((rol:RolesDto) => rol.nombreRol)
             localStorage.setItem('userData', JSON.stringify(res));
             localStorage.setItem('roles', roles);
+            this.router.navigate([''])
           }
         })
     }

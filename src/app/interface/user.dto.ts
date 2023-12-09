@@ -13,4 +13,15 @@ export interface UserDto{
   fechaCreacionUser: Date;
 
   roles: RolesDto[];
+
+  name: String;
+
+  lastName: String;
+
+  email: String;
+
+  phoneNumber: String;
+
+  photo: String;
+
 }

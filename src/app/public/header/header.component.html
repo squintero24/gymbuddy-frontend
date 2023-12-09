@@ -1,0 +1,22 @@
+<header>
+  <div class="left">
+    <!-- Logo o nombre de la página en la esquina izquierda -->
+    <span>GymBuddy</span>
+  </div>
+
+  <div class="right">
+    <!-- Botón para visualizar el usuario -->
+    <button mat-icon-button (click)="openUserInfoModal()" [disabled]="!isLogged">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <!-- Botón de Sign Out -->
+    <button mat-icon-button (click)="logOut()" *ngIf="isLogged">
+      <mat-icon>logout</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="logIn()" *ngIf="!isLogged">
+      <mat-icon>login</mat-icon>
+    </button>
+  </div>
+</header>
