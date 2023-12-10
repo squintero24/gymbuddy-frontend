@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {SnackbarService} from "../../shared/snackbar/service/snackbar.service";
-import {HttpClient} from "@angular/common/http";
-import {UserloginDto} from "../../interface/userlogin.dto";
-import {UserDto} from "../../interface/user.dto";
-import {tap} from "rxjs";
+import { SnackbarService } from "../../shared/snackbar/service/snackbar.service";
+import { HttpClient } from "@angular/common/http";
+import { UserloginDto } from "../../interface/userlogin.dto";
+import { UserDto } from "../../interface/user.dto";
+import { tap } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class UserService {
       )
   }
 
-  crearPersona(persona:any){
+  crearPersona(persona: any) {
     return this.http.post(this.urlBackPersona + '/create', persona).pipe(
       tap(
         {
@@ -67,7 +67,7 @@ export class UserService {
     )
   }
 
-  deletePersona(id: number){
+  deletePersona(id: number) {
     return this.http.delete(this.urlBackPersona + `/delete/${id}`);
   }
 
@@ -75,16 +75,43 @@ export class UserService {
     return this.http.get(this.urlBackPersona + '/all');
   }
 
-  getDocuments(){
+  getDocuments() {
     return this.http.get(this.urlBackPersona + '/documento/all');
   }
 
-  getRoles(){
-    return this.http.get(this.urlBackUser + '/roles/all' );
+  getRoles() {
+    return this.http.get(this.urlBackUser + '/roles/all');
   }
 
-  getPlans(){
-    return this.http.get(this.urlBackPlanes + '/all' );
+  getPlans() {
+    return this.http.get(this.urlBackPlanes + '/all');
   }
+
+
+  changePsswd(user: UserloginDto) {
+    return this.http.put('http://localhost:8080/gymbuddy/api/persona/update', user)
+      .pipe(
+        tap(
+          {
+            next: (res) => {
+              if (res) {
+                this.snackbar.show({
+                  mensaje: 'Contraseña actualizada con exito, bienvenido.',
+                  tipo: "success"
+                })
+              }
+            },
+            error: (error) => {
+              this.snackbar.show({
+                mensaje: 'Problema en la actualización, verifique.',
+                tipo: "error"
+              })
+            }
+          }
+        )
+      )
+  }
+
+
 
 }

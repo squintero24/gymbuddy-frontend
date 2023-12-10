@@ -38,6 +38,7 @@ import {MatSortModule} from "@angular/material/sort";
 import { CrearEditarUsuarioComponent } from './admin/component/usuarios/crear-editar-usuario/crear-editar-usuario.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { CambioPsswComponent } from './public/cambio-pssw/cambio-pssw.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     HeaderComponent,
     UserInfoComponent,
     AdminDashboardComponent,
+    CambioPsswComponent,
     UsuariosComponent,
     EntrenamientoComponent,
     PlanesComponent,

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit{
             const roles = res.roles?.map((rol:RolesDto) => rol.nombreRol)
             localStorage.setItem('userData', JSON.stringify(res));
             localStorage.setItem('roles', roles);
-            this.router.navigate([''])
+            this.router.navigate(['user/changePsswd'])
           }
         })
     }
