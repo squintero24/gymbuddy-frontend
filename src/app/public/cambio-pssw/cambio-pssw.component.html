@@ -1,0 +1,22 @@
+<div class="change-password-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Cambio de Contraseña</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="form" (submit)="changePassword()">
+          <mat-form-field class="full-width">
+            <input formControlName="newPassword" matInput type="password" placeholder="Nueva Contraseña" required>
+            <mat-error *ngIf="form.controls['newPassword'].hasError('required')">Este campo es obligatorio.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input formControlName="confirmPassword" matInput type="password" placeholder="Confirmar Contraseña" required>
+            <mat-error *ngIf="form.controls['confirmPassword'].hasError('required')">Este campo es obligatorio.</mat-error>
+            <mat-error *ngIf="form.hasError('passwordMismatch')">Las contraseñas no coinciden.</mat-error>
+          </mat-form-field>
+          <button mat-button color="primary" [disabled]="form.invalid">Cambiar Contraseña</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

@@ -6,8 +6,9 @@ import {AdminDashboardComponent} from "./admin/admin-dashboard/admin-dashboard.c
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
-  {path:'admin/dashboard', component:AdminDashboardComponent},
-  {path:'user/changePsswd', component:CambioPsswComponent}
+  {path:'', component:AdminDashboardComponent},
+  {path:'user/changePsswd', component:CambioPsswComponent},
+  {path:'miembro/dashBoard', component:LoginComponent} //cambiar a dashboard de miembros
 ];
 
 @NgModule({

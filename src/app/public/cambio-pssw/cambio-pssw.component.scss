@@ -1,0 +1,22 @@
+.change-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  mat-error {
+    color: #d9534f; /* Estilo para mensajes de error */
+  }
+  

@@ -89,7 +89,7 @@ export class UserService {
 
 
   changePsswd(user: UserloginDto) {
-    return this.http.put('http://localhost:8080/gymbuddy/api/persona/update', user)
+    return this.http.put(this.urlBackUser + '/update', user)
       .pipe(
         tap(
           {
