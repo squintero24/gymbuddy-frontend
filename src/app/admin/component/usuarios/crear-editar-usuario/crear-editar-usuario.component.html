@@ -40,7 +40,7 @@
     <div class="col-6">
       <mat-form-field>
         <mat-label>Fecha nacimiento</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <input matInput [matDatepicker]="picker" formControlName="birthDate" >
         <mat-error *ngIf="form.get('birthDate')?.hasError">Fecha de nacimiento es requerida</mat-error>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -119,7 +119,7 @@
       <mat-form-field>
         <mat-label>Fecha plan</mat-label>
         <mat-date-range-input [rangePicker]="pickerRange">
-          <input matStartDate placeholder="Fecha inicio" formControlName="fechaDesdePlan">
+          <input matStartDate placeholder="Fecha inicio"  formControlName="fechaDesdePlan">
           <input matEndDate placeholder="Fecha fin" formControlName="fechaHastaPlan">
         </mat-date-range-input>
         <mat-error *ngIf="form.get('fechaDesdePlan')?.hasError || form.get('fechaHastaPlan')?.hasError">Debe ingresar una fecha del plan adecuada, verifique</mat-error>

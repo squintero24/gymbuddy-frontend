@@ -74,6 +74,10 @@ export class UsuariosComponent implements  OnInit{
     })
   }
 
+  view(row:any){
+    console.log(row);
+  }
+
   refresh(){
     this.userService.getUsers().subscribe((data) => {
       this.posts = data;
@@ -93,11 +97,12 @@ export class UsuariosComponent implements  OnInit{
     }
   }
 
-  openCreateEditUser(){
+  openCreateEditUser(mode: 'crear' | 'editar', userData?: any){
     this.dialog.open(CrearEditarUsuarioComponent, {
       width: '600px',
       autoFocus: false,
-      maxHeight: '90vh'
+      maxHeight: '90vh',
+      data: { mode, userData }
     }).afterClosed().subscribe(
       () => {
         this.refresh();

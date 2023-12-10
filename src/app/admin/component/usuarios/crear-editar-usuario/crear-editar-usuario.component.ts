@@ -19,7 +19,7 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   planes: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: UserDto
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any
               , private fb: FormBuilder
               , private userService: UserService
               , private dialogRef: MatDialogRef<CrearEditarUsuarioComponent>) { }
@@ -27,13 +27,17 @@ export class CrearEditarUsuarioComponent implements OnInit{
   ngOnInit() {
     this.buildForm();
     this.loadData()
+    if(this.data.mode === 'editar'){
+      console.log(this.data.userData)
+      this.form.patchValue(this.data.userData);
+      console.log(this.form.value)
+    }
   }
 
   loadData(): void {
     this.userService.getDocuments().subscribe(
       (result) => {
         this.tiposDocumentos = result;
-        console.log(result)
       },
       (error) => {
         console.error('Error al obtener tipos doc', error);
@@ -86,6 +90,10 @@ export class CrearEditarUsuarioComponent implements OnInit{
       fechaDesdePlan: ['',Validators.required],
       fechaHastaPlan: ['',Validators.required],
     });}
+
+  /*compareFn(op1, op2) {
+    return op1.id === op2.id;
+  }*/
 
 
 }
