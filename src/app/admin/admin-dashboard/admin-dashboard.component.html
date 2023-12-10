@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <select class="form-select form-select-sm" aria-label="Small select example" (change)="mostrarTarjeta($event)">
+    <option *ngFor="let opcion of opciones" [value]="opcion.id">{{ opcion.nombre }}</option>
+  </select>
+</div>
+
+<div class="container mt-3" *ngIf="seleccionActual == 1">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Entrenamientos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-entrenamiento></app-entrenamiento>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="container mt-3" *ngIf="seleccionActual == 2">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Usuarios</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-usuarios></app-usuarios>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="container mt-3" *ngIf="seleccionActual == 3">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Planes de entrenamiento</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Contenido específico para Planes de entrenamiento -->
+      <app-planes></app-planes>
+    </mat-card-content>
+  </mat-card>
+</div>

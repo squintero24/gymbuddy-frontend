@@ -10,12 +10,16 @@ import {tap} from "rxjs";
 })
 export class UserService {
 
-  urlBack: String = 'http://localhost:8080/gymbuddy/api/user';
-  constructor(private http:HttpClient, private snackbar: SnackbarService) { }
+  urlBackUser: String = 'http://localhost:8080/gymbuddy/api/user';
+
+  urlBackPersona: String = 'http://localhost:8080/gymbuddy/api/persona';
+
+  constructor(private http: HttpClient, private snackbar: SnackbarService) {
+  }
 
 
-  login(user:UserloginDto){
-    return this.http.post(this.urlBack + '/login', user)
+  login(user: UserloginDto) {
+    return this.http.post(this.urlBackUser + '/login', user)
       .pipe(
         tap(
           {
@@ -27,7 +31,7 @@ export class UserService {
                 })
               }
             },
-            error: (error)=> {
+            error: (error) => {
               this.snackbar.show({
                 mensaje: 'Problema en el login, verifique.',
                 tipo: "error"
@@ -38,6 +42,8 @@ export class UserService {
       )
   }
 
-
+  getUsers() {
+    return this.http.get(this.urlBackPersona + '/all');
+  }
 
 }

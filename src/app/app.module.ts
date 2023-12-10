@@ -22,7 +22,19 @@ import { HeaderComponent } from './public/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { UserInfoComponent } from './public/header/user-info/user-info.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { UsuariosComponent } from './admin/component/usuarios/usuarios.component';
+import { EntrenamientoComponent } from './admin/component/entrenamiento/entrenamiento.component';
+import { PlanesComponent } from './admin/component/planes/planes.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -30,7 +42,10 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     LoginComponent,
     HeaderComponent,
     UserInfoComponent,
-    DashboardComponent
+    AdminDashboardComponent,
+    UsuariosComponent,
+    EntrenamientoComponent,
+    PlanesComponent
   ],
   imports: [
     HttpClientModule,
@@ -48,7 +63,16 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     ConfirmModule,
     MatToolbarModule,
     MatDialogModule,
-    FlexLayoutModule
+    MatGridListModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [
     SnackbarService,
