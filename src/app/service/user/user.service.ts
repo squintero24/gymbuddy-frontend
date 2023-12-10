@@ -14,6 +14,8 @@ export class UserService {
 
   urlBackPersona: String = 'http://localhost:8080/gymbuddy/api/persona';
 
+  urlBackPlanes: String = 'http://localhost:8080/gymbuddy/api/planes';
+
   constructor(private http: HttpClient, private snackbar: SnackbarService) {
   }
 
@@ -42,8 +44,47 @@ export class UserService {
       )
   }
 
+  crearPersona(persona:any){
+    return this.http.post(this.urlBackPersona + '/create', persona).pipe(
+      tap(
+        {
+          next: (res) => {
+            if (res) {
+              this.snackbar.show({
+                mensaje: 'Se ha creado correctamente el nuevo usuario.',
+                tipo: "success"
+              })
+            }
+          },
+          error: (error) => {
+            this.snackbar.show({
+              mensaje: 'Problemas creando usuario, por favor verifique.',
+              tipo: "error"
+            })
+          }
+        }
+      )
+    )
+  }
+
+  deletePersona(id: number){
+    return this.http.delete(this.urlBackPersona + `/delete/${id}`);
+  }
+
   getUsers() {
     return this.http.get(this.urlBackPersona + '/all');
+  }
+
+  getDocuments(){
+    return this.http.get(this.urlBackPersona + '/documento/all');
+  }
+
+  getRoles(){
+    return this.http.get(this.urlBackUser + '/roles/all' );
+  }
+
+  getPlans(){
+    return this.http.get(this.urlBackPlanes + '/all' );
   }
 
 }

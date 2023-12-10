@@ -1,27 +1,82 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
 import {UserDto} from "../../../interface/user.dto";
 import {UserService} from "../../../service/user/user.service";
+import {MatDialog} from "@angular/material/dialog";
+import {UserInfoComponent} from "../../../public/header/user-info/user-info.component";
+import {CrearEditarUsuarioComponent} from "./crear-editar-usuario/crear-editar-usuario.component";
+import {ConfirmService} from "../../../shared/confirm/service/confirm.service";
+import {SnackbarService} from "../../../shared/snackbar/service/snackbar.service";
 
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements  OnInit{
 
-  displayedColumns: string[] = ['name', 'lastName', 'numDocument', 'email'];
+  displayedColumns: string[] = ['name', 'lastName', 'numDocument', 'email' , "actions"];
   dataSource!: MatTableDataSource<UserDto>;
   posts: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService,
+              private dialog: MatDialog,
+              private confirm:ConfirmService,
+              private snackbar: SnackbarService) {
+  }
+
+  ngOnInit() {
+    this.refresh();
+  }
+
+  onEdit(row: any){
+    console.log(row);
+  }
+
+  onDelete(row: any) {
+    const optionsConfirm = {
+      title: 'Eliminar',
+      message: `Desea borrar a ${row.name} ${row.lastName} con numero documento ${row.numDocument} `, //se espera que agreguen getCategoriaById,
+      cancelText: 'Cancelar',
+      confirmText: 'Borrar'
+    }
+
+    this.confirm.open(optionsConfirm);
+    this.confirm.confirmed().subscribe(confirmed => {
+      if (confirmed) {
+        this.userService.deletePersona(row.id).subscribe(
+          {
+            next: (resp: any) => {
+              this.refresh();
+              this.snackbar.show(
+                {
+                  mensaje: 'Usuario eliminado correctamente',
+                  tipo: 'success'
+                }
+              );
+            },
+            error: (res => {
+              this.snackbar.show(
+                {
+                  mensaje: 'No se pudo eliminar el usuario.',
+                  tipo: 'error'
+                }
+              );
+            })
+          }
+        )
+      }
+    })
+  }
+
+  refresh(){
     this.userService.getUsers().subscribe((data) => {
       this.posts = data;
-      // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(this.posts);
 
       this.dataSource.paginator = this.paginator;
@@ -38,4 +93,15 @@ export class UsuariosComponent {
     }
   }
 
+  openCreateEditUser(){
+    this.dialog.open(CrearEditarUsuarioComponent, {
+      width: '600px',
+      autoFocus: false,
+      maxHeight: '90vh'
+    }).afterClosed().subscribe(
+      () => {
+        this.refresh();
+      }
+    )
+  }
 }

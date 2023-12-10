@@ -1,0 +1,147 @@
+
+
+<form [formGroup]="form" class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="form.get('name')?.hasError">Nombre es requerido</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="form.get('lastName')?.hasError">Apellido es requerido</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="address">
+        <mat-error *ngIf="form.get('address')?.hasError">Una dirección es requerida</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Barrio</mat-label>
+        <input matInput formControlName="neighborhood">
+        <mat-error *ngIf="form.get('neighborhood')?.hasError">Un barrio es requerido</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Fecha nacimiento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-error *ngIf="form.get('birthDate')?.hasError">Fecha de nacimiento es requerida</mat-error>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+          Ingrese una direccion de correo valida.
+        </mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('required')">
+          Un correo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Tipos de documentos identificación</mat-label>
+        <mat-select formControlName="idTipoDocumento">
+          <mat-option *ngFor="let item of tiposDocumentos" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('idTipoDocumento')?.hasError">Un tipo de documento es requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Numero de documento</mat-label>
+        <input matInput formControlName="numDocument">
+        <mat-error *ngIf="form.get('numDocument')?.hasError">Un numero de documento es requerido</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Numero de celular</mat-label>
+        <input matInput formControlName="phoneNumber">
+        <mat-error *ngIf="form.get('phoneNumber')?.hasError">Un numero de celular es requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Rol del usuario</mat-label>
+        <mat-select formControlName="idRol">
+          <mat-option *ngFor="let item of tiposRoles" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('idRol')?.hasError">Un rol es requerido</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Tipo de plan</mat-label>
+        <mat-select formControlName="idPlan">
+          <mat-option *ngFor="let item of planes" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('idPlan')?.hasError">Un plan de entrenamiento es requerido</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field>
+        <mat-label>Fecha plan</mat-label>
+        <mat-date-range-input [rangePicker]="pickerRange">
+          <input matStartDate placeholder="Fecha inicio" formControlName="fechaDesdePlan">
+          <input matEndDate placeholder="Fecha fin" formControlName="fechaHastaPlan">
+        </mat-date-range-input>
+        <mat-error *ngIf="form.get('fechaDesdePlan')?.hasError || form.get('fechaHastaPlan')?.hasError">Debe ingresar una fecha del plan adecuada, verifique</mat-error>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerRange"></mat-datepicker-toggle>
+        <mat-date-range-picker #pickerRange></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-12">
+      <mat-form-field class="mb-4 flex-fill" appearance="fill">
+        <mat-label>Url foto de perfil</mat-label>
+        <input matInput formControlName="photo">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-12 text-center mb-4">
+      <button type="submit" mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</form>

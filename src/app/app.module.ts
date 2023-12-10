@@ -35,6 +35,9 @@ import { PlanesComponent } from './admin/component/planes/planes.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import { CrearEditarUsuarioComponent } from './admin/component/usuarios/crear-editar-usuario/crear-editar-usuario.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import {MatSortModule} from "@angular/material/sort";
     AdminDashboardComponent,
     UsuariosComponent,
     EntrenamientoComponent,
-    PlanesComponent
+    PlanesComponent,
+    CrearEditarUsuarioComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,7 +76,9 @@ import {MatSortModule} from "@angular/material/sort";
     MatButtonToggleModule,
     MatPaginatorModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     SnackbarService,
