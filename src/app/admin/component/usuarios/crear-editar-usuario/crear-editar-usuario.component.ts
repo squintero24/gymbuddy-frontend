@@ -40,7 +40,18 @@ export class CrearEditarUsuarioComponent implements OnInit{
       //fechas
       this.form.get('fechaDesdePlan')?.setValue(ultimoPlanUser.startDate);
       this.form.get('fechaHastaPlan')?.setValue(ultimoPlanUser.endDate);
+      //Otros atributos:
+      this.form.get('extenderPlan')?.setValue(false);
+      this.form.get('cambiarPlan')?.setValue(false);
+      this.form.get('cambiarRol')?.setValue(false);
+      //Se desactivan los campos que por defecto van a estar desactivados.
+      this.form.get('idRol')?.disable();
+      this.form.get('idPlan')?.disable();
+      this.form.get('fechaDesdePlan')?.disable();
+      this.form.get('fechaHastaPlan')?.disable();
     }
+
+    this.onChanges();
   }
 
   loadData(): void {
@@ -71,6 +82,41 @@ export class CrearEditarUsuarioComponent implements OnInit{
     );
   }
 
+  onChanges(){
+    //Id rol
+    this.form.controls['cambiarRol'].valueChanges.subscribe((value) => {
+      if(value){
+        this.form.get('idRol')?.enable();
+      }else{
+        this.form.get('idRol')?.disable();
+      }
+    });
+    //Id Plan: EXTENDER
+    this.form.controls['extenderPlan'].valueChanges.subscribe((value) => {
+      if(value){
+        this.form.get('cambiarPlan')?.setValue(false);
+        this.form.get('fechaDesdePlan')?.enable();
+        this.form.get('fechaHastaPlan')?.enable();
+      }else{
+        this.form.get('fechaDesdePlan')?.disable();
+        this.form.get('fechaHastaPlan')?.disable();
+      }
+    });
+    //Id Plan: CAMBIAR
+    this.form.controls['cambiarPlan'].valueChanges.subscribe((value) => {
+      if(value){
+        this.form.get('extenderPlan')?.setValue(false);
+        this.form.get('idPlan')?.enable();
+        this.form.get('fechaDesdePlan')?.enable();
+        this.form.get('fechaHastaPlan')?.enable();
+      }else{
+        this.form.get('idPlan')?.disable();
+        this.form.get('fechaDesdePlan')?.disable();
+        this.form.get('fechaHastaPlan')?.disable();
+      }
+    });
+  }
+
   submit(){
     if(this.form.valid){
       this.userService.crearPersona(this.form.value)
@@ -95,6 +141,9 @@ export class CrearEditarUsuarioComponent implements OnInit{
       idTipoDocumento: ['', Validators.required],
       idPlan: ['', Validators.required],
       idRol: ['', Validators.required],
+      extenderPlan: [false],
+      cambiarPlan: [false],
+      cambiarRol: [false],
       photo: ['', Validators.required],
       fechaDesdePlan: ['',Validators.required],
       fechaHastaPlan: ['',Validators.required],

@@ -91,9 +91,9 @@
 
   <div class="row" *ngIf="data.mode==='editar'">
     <mat-label class="custom-label">Quiere cambiar el rol del usuario.</mat-label>
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1">Sí</mat-radio-button>
-      <mat-radio-button value="2">No</mat-radio-button>
+    <mat-radio-group aria-label="Select an option" formControlName="cambiarRol">
+      <mat-radio-button [value]="true">Sí</mat-radio-button>
+      <mat-radio-button [value]="false">No</mat-radio-button>
     </mat-radio-group>
   </div>
 
@@ -113,20 +113,19 @@
 
   <div class="row" *ngIf="data.mode==='editar'">
     <div class="col">
-      <mat-label class="custom-label">Quiere cambiar el tipo del plan.</mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Sí</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
+      <mat-label class="custom-label">Desea extender el plan actual.</mat-label>
+      <mat-radio-group aria-label="Select an option" formControlName="extenderPlan">
+        <mat-radio-button [value]="true">Sí</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
       </mat-radio-group>
     </div>
     <div class="col">
-      <mat-label class="custom-label">Desea extender el plan actual.</mat-label>
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Sí</mat-radio-button>
-        <mat-radio-button value="2">No</mat-radio-button>
+      <mat-label class="custom-label">Quiere cambiar el tipo del plan.</mat-label>
+      <mat-radio-group aria-label="Select an option" formControlName="cambiarPlan">
+        <mat-radio-button [value]="true">Sí</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
       </mat-radio-group>
     </div>
-
   </div>
 
   <div class="row mb-3">
