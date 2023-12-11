@@ -9,6 +9,7 @@ import {ConfirmService} from "../../../shared/confirm/service/confirm.service";
 import {SnackbarService} from "../../../shared/snackbar/service/snackbar.service";
 import {CrearEditarUsuarioComponent} from "../usuarios/crear-editar-usuario/crear-editar-usuario.component";
 import {PlanesService} from "../../../service/planes/planes.service";
+import {CrearEditarPlanComponent} from "./crear-editar-plan/crear-editar-plan.component";
 
 @Component({
   selector: 'app-planes',
@@ -97,12 +98,12 @@ export class PlanesComponent implements OnInit{
     }
   }
 
-  openCreateEditUser(mode: 'crear' | 'editar', userData?: any){
-    this.dialog.open(CrearEditarUsuarioComponent, {
+  openCreateEditPlanes(mode: 'crear' | 'editar', planData?: any){
+    this.dialog.open(CrearEditarPlanComponent, {
       width: '600px',
       autoFocus: false,
       maxHeight: '90vh',
-      data: { mode, userData }
+      data: { mode, planData }
     }).afterClosed().subscribe(
       () => {
         this.refresh();

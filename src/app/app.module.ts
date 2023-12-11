@@ -39,6 +39,10 @@ import { CrearEditarUsuarioComponent } from './admin/component/usuarios/crear-ed
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { CambioPsswComponent } from './public/cambio-pssw/cambio-pssw.component';
+import {CrearEditarPlanComponent} from "./admin/component/planes/crear-editar-plan/crear-editar-plan.component";
+import {
+  CrearEditarEntrenamientoComponent
+} from "./admin/component/entrenamiento/crear-editar-entrenamiento/crear-editar-entrenamiento.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +55,9 @@ import { CambioPsswComponent } from './public/cambio-pssw/cambio-pssw.component'
     UsuariosComponent,
     EntrenamientoComponent,
     PlanesComponent,
-    CrearEditarUsuarioComponent
+    CrearEditarUsuarioComponent,
+    CrearEditarPlanComponent,
+    CrearEditarEntrenamientoComponent
   ],
   imports: [
     HttpClientModule,

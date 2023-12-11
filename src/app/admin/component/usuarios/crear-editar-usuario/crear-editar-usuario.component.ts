@@ -26,7 +26,7 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   ngOnInit() {
     this.buildForm();
-    this.loadData()
+    this.loadData();
     if(this.data.mode === 'editar'){
       console.log(this.data.userData)
       this.form.patchValue(this.data.userData);
@@ -66,7 +66,7 @@ export class CrearEditarUsuarioComponent implements OnInit{
     if(this.form.valid){
       this.userService.crearPersona(this.form.value)
         .subscribe(
-          (res) => {
+          () => {
             this.dialogRef.close();
           }
         );
@@ -90,10 +90,5 @@ export class CrearEditarUsuarioComponent implements OnInit{
       fechaDesdePlan: ['',Validators.required],
       fechaHastaPlan: ['',Validators.required],
     });}
-
-  /*compareFn(op1, op2) {
-    return op1.id === op2.id;
-  }*/
-
 
 }
