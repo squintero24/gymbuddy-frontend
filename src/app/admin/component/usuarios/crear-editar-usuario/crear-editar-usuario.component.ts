@@ -119,12 +119,21 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   submit(){
     if(this.form.valid){
-      this.userService.crearPersona(this.form.value)
-        .subscribe(
-          () => {
-            this.dialogRef.close();
-          }
-        );
+      if(this.data.mode === 'editar'){
+        this.userService.crearPersona(this.form.value)
+          .subscribe(
+            () => {
+              this.dialogRef.close();
+            }
+          );
+      }else{
+        this.userService.actualizarPersona(this.form.value)
+          .subscribe(
+            () => {
+              this.dialogRef.close();
+            }
+          );
+      }
     }
   }
 

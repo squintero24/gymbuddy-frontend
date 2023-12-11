@@ -67,6 +67,30 @@ export class UserService {
     )
   }
 
+  actualizarPersona(persona:any){
+    return this.http.put(this.urlBackPersona + '/update', persona).pipe(
+      tap(
+        {
+          next: (res) => {
+            if (res) {
+              this.snackbar.show({
+                mensaje: 'Se ha actualizado correctamente el usuario.',
+                tipo: "success"
+              })
+            }
+          },
+          error: (error) => {
+            this.snackbar.show({
+              mensaje: 'Problemas actualizando usuario, por favor verifique.',
+              tipo: "error"
+            })
+          }
+        }
+      )
+    )
+  }
+
+
   deletePersona(id: number) {
     return this.http.delete(this.urlBackPersona + `/delete/${id}`);
   }
