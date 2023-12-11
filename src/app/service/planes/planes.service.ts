@@ -62,8 +62,8 @@ export class PlanesService {
   }
 
   deletePlan(id:number){
-
-  }
+    return this.http.delete(this.urlBackPlanes + `/delete/${id}`)
+    }
 
   getPlanes(){
     return this.http.get(this.urlBackPlanes + '/all');

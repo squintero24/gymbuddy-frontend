@@ -35,14 +35,10 @@ export class PlanesComponent implements OnInit{
     this.refresh();
   }
 
-  onEdit(row: any){
-    console.log(row);
-  }
-
   onDelete(row: any) {
     const optionsConfirm = {
       title: 'Eliminar',
-      message: `Desea borrar a ${row.name} ${row.lastName} con numero documento ${row.numDocument} `, //se espera que agreguen getCategoriaById,
+      message: `Desea borrar el plan ${row.name} ? `,
       cancelText: 'Cancelar',
       confirmText: 'Borrar'
     }
@@ -50,13 +46,13 @@ export class PlanesComponent implements OnInit{
     this.confirm.open(optionsConfirm);
     this.confirm.confirmed().subscribe(confirmed => {
       if (confirmed) {
-        this.planesService.getPlanes().subscribe(
+        this.planesService.deletePlan(row.id).subscribe(
           {
             next: (resp: any) => {
               this.refresh();
               this.snackbar.show(
                 {
-                  mensaje: 'Usuario eliminado correctamente',
+                  mensaje: 'Se elimino correctamente el plan.',
                   tipo: 'success'
                 }
               );
@@ -64,7 +60,7 @@ export class PlanesComponent implements OnInit{
             error: (res => {
               this.snackbar.show(
                 {
-                  mensaje: 'No se pudo eliminar el usuario.',
+                  mensaje: 'Problema eliminando el plan.',
                   tipo: 'error'
                 }
               );
