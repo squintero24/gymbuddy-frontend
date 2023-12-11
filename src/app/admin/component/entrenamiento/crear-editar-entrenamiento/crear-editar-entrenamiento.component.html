@@ -1,1 +1,50 @@
-<p>crear-editar-entrenamiento works!</p>
+<form [formGroup]="form" class="container mt-5">
+  <h2 class="text-center">{{tituloModal}}</h2>
+  <div class="row mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre entrenamiento</mat-label>
+      <input matInput formControlName="nombreClase">
+      <mat-error *ngIf="form.get('nombreClase')?.hasError">Un nombre para el entrenamiento es requerido.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripción del entrenamiento</mat-label>
+      <textarea matInput placeholder="Este entrenamiento vamos a..." formControlName="descripcionClase"></textarea>
+      <mat-error *ngIf="form.get('descripcionClase')?.hasError">Una descripcion para el entrenamiento es requerido.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row mb-3">
+    <mat-form-field>
+      <mat-label>Fecha inicio entrenamiento</mat-label>
+      <input matInput type="datetime-local" placeholder="start date" [ngModel]="!!data.entrenamientoData ? (data.entrenamientoData.inicioClase | date:'yyyy-MM-ddTHH:mm') : ''" formControlName="inicioClase">
+      <mat-error *ngIf="form.get('inicioClase')?.hasError">Una fecha inicio para el entrenamiento es requerido.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row mb-3">
+    <mat-form-field>
+      <mat-label>Fecha fin entrenamiento</mat-label>
+      <input matInput type="datetime-local" placeholder="start date" [ngModel]="!!data.entrenamientoData ? (data.entrenamientoData.finClase | date:'yyyy-MM-ddTHH:mm') : ''" formControlName="finClase">
+      <mat-error *ngIf="form.get('finClase')?.hasError">Una fecha fin para el entrenamiento es requerido.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Foto </mat-label>
+      <textarea matInput placeholder="Una foto que relacione el entrenamiento." formControlName="foto"></textarea>
+      <mat-error *ngIf="form.get('foto')?.hasError">Una foto para el entrenamiento es requerida</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div class="row mb-3">
+    <div class="col-md-12 text-center mb-4">
+      <button type="submit" mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+
+</form>

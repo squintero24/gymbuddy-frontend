@@ -42,7 +42,7 @@
       <button mat-icon-button color="primary" (click)="openCreateEditUser('editar',row)">
       <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="onDelete(row)">
+      <button mat-icon-button color="warn" (click)="onDelete(row)" [disabled]="row.id == userInfo.idPerson">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

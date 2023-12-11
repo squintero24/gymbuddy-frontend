@@ -4,6 +4,8 @@ export interface UserDto{
 
   id: number;
 
+  idPerson: number;
+
   username: String;
 
   passwd: String;

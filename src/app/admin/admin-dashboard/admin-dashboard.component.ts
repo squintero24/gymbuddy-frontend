@@ -17,7 +17,6 @@ export class AdminDashboardComponent {
 
   mostrarTarjeta(value:any): void {
     this.seleccionActual = value.target.value;
-    console.log(this.seleccionActual);
   }
 
 }

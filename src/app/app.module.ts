@@ -43,6 +43,9 @@ import {CrearEditarPlanComponent} from "./admin/component/planes/crear-editar-pl
 import {
   CrearEditarEntrenamientoComponent
 } from "./admin/component/entrenamiento/crear-editar-entrenamiento/crear-editar-entrenamiento.component";
+import {DatePipe} from "@angular/common";
+import { ViewPlanesComponent } from './admin/component/planes/view-planes/view-planes.component';
+import { ViewEntrenamientoComponent } from './admin/component/entrenamiento/view-entrenamiento/view-entrenamiento.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import {
     PlanesComponent,
     CrearEditarUsuarioComponent,
     CrearEditarPlanComponent,
-    CrearEditarEntrenamientoComponent
+    CrearEditarEntrenamientoComponent,
+    ViewPlanesComponent,
+    ViewEntrenamientoComponent
   ],
   imports: [
     HttpClientModule,
@@ -95,6 +100,7 @@ import {
       provide:MatDialogRef,
       useValue:{}
     },
+    DatePipe,
 
   ],
   bootstrap: [AppComponent]

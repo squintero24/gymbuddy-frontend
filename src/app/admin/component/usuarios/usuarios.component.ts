@@ -23,6 +23,11 @@ export class UsuariosComponent implements  OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  get userInfo(): UserDto {
+    const userSaved = localStorage.getItem('userData');
+    return JSON.parse(userSaved || '{}');
+  }
+
 
   constructor(private userService: UserService,
               private dialog: MatDialog,
@@ -32,10 +37,6 @@ export class UsuariosComponent implements  OnInit{
 
   ngOnInit() {
     this.refresh();
-  }
-
-  onEdit(row: any){
-    console.log(row);
   }
 
   onDelete(row: any) {

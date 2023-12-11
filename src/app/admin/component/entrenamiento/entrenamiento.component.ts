@@ -9,6 +9,10 @@ import {ConfirmService} from "../../../shared/confirm/service/confirm.service";
 import {SnackbarService} from "../../../shared/snackbar/service/snackbar.service";
 import {CrearEditarUsuarioComponent} from "../usuarios/crear-editar-usuario/crear-editar-usuario.component";
 import {EntrenamientoService} from "../../../service/entrenamiento/entrenamiento.service";
+import {CrearEditarEntrenamientoComponent} from "./crear-editar-entrenamiento/crear-editar-entrenamiento.component";
+import {DatePipe} from "@angular/common";
+import {ViewPlanesComponent} from "../planes/view-planes/view-planes.component";
+import {ViewEntrenamientoComponent} from "./view-entrenamiento/view-entrenamiento.component";
 
 @Component({
   selector: 'app-entrenamiento',
@@ -34,14 +38,10 @@ export class EntrenamientoComponent implements OnInit{
     this.refresh();
   }
 
-  onEdit(row: any){
-    console.log(row);
-  }
-
   onDelete(row: any) {
     const optionsConfirm = {
       title: 'Eliminar',
-      message: `Desea borrar a ${row.name} ${row.lastName} con numero documento ${row.numDocument} `, //se espera que agreguen getCategoriaById,
+      message: `Desea borrar ${row.nombreClase} `,
       cancelText: 'Cancelar',
       confirmText: 'Borrar'
     }
@@ -49,13 +49,13 @@ export class EntrenamientoComponent implements OnInit{
     this.confirm.open(optionsConfirm);
     this.confirm.confirmed().subscribe(confirmed => {
       if (confirmed) {
-        this.entrenamientoService.getEntrenamientos().subscribe(
+        this.entrenamientoService.deleteEntrenamiento(row.id).subscribe(
           {
             next: (resp: any) => {
               this.refresh();
               this.snackbar.show(
                 {
-                  mensaje: 'Usuario eliminado correctamente',
+                  mensaje: 'Entrenamiento eliminado correctamente',
                   tipo: 'success'
                 }
               );
@@ -63,7 +63,7 @@ export class EntrenamientoComponent implements OnInit{
             error: (res => {
               this.snackbar.show(
                 {
-                  mensaje: 'No se pudo eliminar el usuario.',
+                  mensaje: 'No se pudo eliminar el entrenamiento.',
                   tipo: 'error'
                 }
               );
@@ -75,8 +75,14 @@ export class EntrenamientoComponent implements OnInit{
   }
 
   view(row:any){
-    console.log(row);
+    this.dialog.open(ViewEntrenamientoComponent, {
+      width: '1200px',
+      autoFocus: false,
+      maxHeight: '90vh',
+      data: { row }
+    })
   }
+
 
   refresh(){
     this.entrenamientoService.getEntrenamientos().subscribe((data) => {
@@ -97,12 +103,12 @@ export class EntrenamientoComponent implements OnInit{
     }
   }
 
-  openCreateEditUser(mode: 'crear' | 'editar', userData?: any){
-    this.dialog.open(CrearEditarUsuarioComponent, {
+  openCreateEditUser(mode: 'crear' | 'editar', entrenamientoData?: any){
+    this.dialog.open(CrearEditarEntrenamientoComponent, {
       width: '600px',
       autoFocus: false,
       maxHeight: '90vh',
-      data: { mode, userData }
+      data: { mode, entrenamientoData }
     }).afterClosed().subscribe(
       () => {
         this.refresh();

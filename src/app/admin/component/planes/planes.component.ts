@@ -10,6 +10,7 @@ import {SnackbarService} from "../../../shared/snackbar/service/snackbar.service
 import {CrearEditarUsuarioComponent} from "../usuarios/crear-editar-usuario/crear-editar-usuario.component";
 import {PlanesService} from "../../../service/planes/planes.service";
 import {CrearEditarPlanComponent} from "./crear-editar-plan/crear-editar-plan.component";
+import {ViewPlanesComponent} from "./view-planes/view-planes.component";
 
 @Component({
   selector: 'app-planes',
@@ -72,7 +73,12 @@ export class PlanesComponent implements OnInit{
   }
 
   view(row:any){
-    console.log(row);
+    this.dialog.open(ViewPlanesComponent, {
+      width: '1200px',
+      autoFocus: false,
+      maxHeight: '90vh',
+      data: { row }
+    })
   }
 
   refresh(){
