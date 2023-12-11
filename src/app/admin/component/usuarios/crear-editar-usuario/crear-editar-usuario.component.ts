@@ -19,6 +19,8 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   planes: any;
 
+  tituloModal:String = 'Crear User';
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any
               , private fb: FormBuilder
               , private userService: UserService
@@ -28,9 +30,16 @@ export class CrearEditarUsuarioComponent implements OnInit{
     this.buildForm();
     this.loadData();
     if(this.data.mode === 'editar'){
-      console.log(this.data.userData)
+      this.tituloModal = 'Actualizar User';
+      //buscar el ultimo plan que tiene el usuario
+      const ultimoPlanUser = this.data.userData.plansDto.sort((a:any, b:any) => {
+        return a.endDate - b.endDate;
+      })[0];
+      //formulario
       this.form.patchValue(this.data.userData);
-      console.log(this.form.value)
+      //fechas
+      this.form.get('fechaDesdePlan')?.setValue(ultimoPlanUser.startDate);
+      this.form.get('fechaHastaPlan')?.setValue(ultimoPlanUser.endDate);
     }
   }
 
@@ -86,7 +95,7 @@ export class CrearEditarUsuarioComponent implements OnInit{
       idTipoDocumento: ['', Validators.required],
       idPlan: ['', Validators.required],
       idRol: ['', Validators.required],
-      photo: [''],
+      photo: ['', Validators.required],
       fechaDesdePlan: ['',Validators.required],
       fechaHastaPlan: ['',Validators.required],
     });}

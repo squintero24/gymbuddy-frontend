@@ -46,6 +46,7 @@ import {
 import {DatePipe} from "@angular/common";
 import { ViewPlanesComponent } from './admin/component/planes/view-planes/view-planes.component';
 import { ViewEntrenamientoComponent } from './admin/component/entrenamiento/view-entrenamiento/view-entrenamiento.component';
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { ViewEntrenamientoComponent } from './admin/component/entrenamiento/view
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [
     SnackbarService,

@@ -6,9 +6,7 @@
 
 <div class="container mt-3" *ngIf="seleccionActual == 1">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Entrenamientos</mat-card-title>
-    </mat-card-header>
+    <h1 class="text-center"><strong>Entrenamiento</strong></h1>
     <mat-card-content>
       <app-entrenamiento></app-entrenamiento>
     </mat-card-content>
@@ -17,9 +15,7 @@
 
 <div class="container mt-3" *ngIf="seleccionActual == 2">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Usuarios</mat-card-title>
-    </mat-card-header>
+    <h1 class="text-center"><strong>Usuarios</strong></h1>
     <mat-card-content>
       <app-usuarios></app-usuarios>
     </mat-card-content>
@@ -28,11 +24,8 @@
 
 <div class="container mt-3" *ngIf="seleccionActual == 3">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Planes de entrenamiento</mat-card-title>
-    </mat-card-header>
+    <h1 class="text-center"><strong>Planes</strong></h1>
     <mat-card-content>
-      <!-- Contenido específico para Planes de entrenamiento -->
       <app-planes></app-planes>
     </mat-card-content>
   </mat-card>
