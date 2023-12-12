@@ -1,9 +1,11 @@
 .change-password-container {
+     background: url('../../../assets/login-font.jpg') center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
   }
+
   
   mat-card {
     max-width: 400px;

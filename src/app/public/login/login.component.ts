@@ -50,10 +50,10 @@ export class LoginComponent implements OnInit{
             }
             else{
               if(this.userInfo.roles[0].nombreRol === 'Miembro'){
-                this.router.navigate(['miembro/dashBoard'])
+                this.router.navigate(['Miembro/Home'])
               }
               else if(this.userInfo.roles[0].nombreRol === 'Admin'){
-                this.router.navigate([''])
+                this.router.navigate(['Admin/Home'])
               }
             }
            

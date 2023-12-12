@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {UserInfoComponent} from "./user-info/user-info.component";
 import {Router} from "@angular/router";
+import { UserDto } from 'src/app/interface/user.dto';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,11 @@ export class HeaderComponent {
 
   }
 
+  get userInfo(): UserDto {
+    const userSaved = localStorage.getItem('userData');
+    return JSON.parse(userSaved || '{}');
+  }
+
   logOut(){
     localStorage.removeItem('userData');
     localStorage.removeItem('roles');
@@ -25,6 +31,15 @@ export class HeaderComponent {
 
   logIn(){
     this.router.navigate(['/login']);
+  }
+
+  home(){
+    if(this.userInfo.roles[0].nombreRol === 'Miembro'){
+      this.router.navigate(['Miembro/Home'])
+    }
+    else if(this.userInfo.roles[0].nombreRol === 'Admin'){
+      this.router.navigate(['Admin/Home'])
+  }
   }
 
   openUserInfoModal(): void {

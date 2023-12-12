@@ -50,6 +50,8 @@ import {MatRadioModule} from "@angular/material/radio";
 import { MiembroDashboardComponent } from './public/miembro-dashboard/miembro-dashboard.component';
 import { MisEntrenamientosComponent } from './public/miembro-dashboard/component/entrenamientos/mis-entrenamientos.component';
 import { ViewUsuarioComponent } from './admin/component/usuarios/view-usuario/view-usuario.component';
+import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
+import { HomeMiembroComponent } from './public/home-miembro/home-miembro.component';
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import { ViewUsuarioComponent } from './admin/component/usuarios/view-usuario/vi
     ViewEntrenamientoComponent,
     ViewUsuarioComponent,
     MiembroDashboardComponent,
-    MisEntrenamientosComponent
+    MisEntrenamientosComponent,
+    HomeAdminComponent,
+    HomeMiembroComponent
   ],
   imports: [
     HttpClientModule,
