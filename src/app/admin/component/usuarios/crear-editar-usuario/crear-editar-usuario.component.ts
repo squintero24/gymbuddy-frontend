@@ -123,10 +123,10 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   submit(){
     //Se habilitan todos los campos al momento de enviarlo
-    this.form.enable();
+    console.log(this.form.value)
     if(this.form.valid){
       if(this.data.mode === 'editar'){
-        console.log(this.form.value)
+        this.form.enable();
         this.userService.actualizarPersona(this.form.value)
           .subscribe(
             () => {
