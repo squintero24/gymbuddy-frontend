@@ -47,6 +47,7 @@ import {DatePipe} from "@angular/common";
 import { ViewPlanesComponent } from './admin/component/planes/view-planes/view-planes.component';
 import { ViewEntrenamientoComponent } from './admin/component/entrenamiento/view-entrenamiento/view-entrenamiento.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { ViewUsuarioComponent } from './admin/component/usuarios/view-usuario/view-usuario.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {MatRadioModule} from "@angular/material/radio";
     CrearEditarPlanComponent,
     CrearEditarEntrenamientoComponent,
     ViewPlanesComponent,
-    ViewEntrenamientoComponent
+    ViewEntrenamientoComponent,
+    ViewUsuarioComponent
   ],
   imports: [
     HttpClientModule,

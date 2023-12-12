@@ -9,6 +9,8 @@ import {UserInfoComponent} from "../../../public/header/user-info/user-info.comp
 import {CrearEditarUsuarioComponent} from "./crear-editar-usuario/crear-editar-usuario.component";
 import {ConfirmService} from "../../../shared/confirm/service/confirm.service";
 import {SnackbarService} from "../../../shared/snackbar/service/snackbar.service";
+import {ViewPlanesComponent} from "../planes/view-planes/view-planes.component";
+import {ViewUsuarioComponent} from "./view-usuario/view-usuario.component";
 
 @Component({
   selector: 'app-usuarios',
@@ -76,7 +78,12 @@ export class UsuariosComponent implements  OnInit{
   }
 
   view(row:any){
-    console.log(row);
+    this.dialog.open(ViewUsuarioComponent, {
+      width: '900px',
+      autoFocus: false,
+      maxHeight: '90vh',
+      data: { row }
+    })
   }
 
   refresh(){

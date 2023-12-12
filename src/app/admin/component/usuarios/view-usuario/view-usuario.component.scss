@@ -1,0 +1,13 @@
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* Ajusta el margen según tus preferencias */
+}
+
+.profile-image {
+  width: 100px; /* Ajusta el tamaño según tus preferencias */
+  height: 100px; /* Ajusta el tamaño según tus preferencias */
+  border-radius: 50%; /* Hace que la imagen sea circular */
+  object-fit: cover; /* Ajusta el relleno de la imagen */
+}
