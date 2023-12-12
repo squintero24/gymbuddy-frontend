@@ -68,4 +68,28 @@ export class EntrenamientoService {
   getEntrenamientos(){
     return this.http.get(this.urlBackEntrenamientos + '/all');
   }
+
+  inscribirAEntrenamiento(data:any){
+    return this.http.post(this.urlBackEntrenamientos+'/inscribir',data)
+      .pipe(
+        tap(
+          {
+            next: (res) => {
+              if (res) {
+                this.snackbar.show({
+                  mensaje: 'Se inscribió en el entrenamiento con exito.',
+                  tipo: "success"
+                })
+              }
+            },
+            error: (error) => {
+              this.snackbar.show({
+                mensaje: 'Problema inscribiendose al entrenamiento.',
+                tipo: "error"
+              })
+            }
+          }
+        )
+      )
+  }
 }
