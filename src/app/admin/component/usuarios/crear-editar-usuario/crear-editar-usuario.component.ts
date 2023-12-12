@@ -31,15 +31,19 @@ export class CrearEditarUsuarioComponent implements OnInit{
     this.loadData();
     if(this.data.mode === 'editar'){
       this.tituloModal = 'Actualizar User';
-      //buscar el ultimo plan que tiene el usuario
-      const ultimoPlanUser = this.data.userData.plansDto.sort((a:any, b:any) => {
-        return a.endDate - b.endDate;
-      })[0];
       //formulario
       this.form.patchValue(this.data.userData);
       //fechas
-      this.form.get('fechaDesdePlan')?.setValue(ultimoPlanUser.startDate);
-      this.form.get('fechaHastaPlan')?.setValue(ultimoPlanUser.endDate);
+      this.form.get('fechaDesdePlan')?.setValue(this.data.userData.userPlan.startDate);
+      this.form.get('fechaHastaPlan')?.setValue(this.data.userData.userPlan.endDate);
+      //id plan usuario actual
+      this.form.get('idPlanUsuario')?.setValue(this.data.userData.userPlan.id);
+      //id plan actual
+      this.form.get('idPlan')?.setValue(this.data.userData.userPlan.idPlan);
+      //id rol usuario actual
+      this.form.get('idRolUsuario')?.setValue(this.data.userData.userRol.id);
+      //id rol actual
+      this.form.get('idRol')?.setValue(this.data.userData.userRol.idRol);
       //Otros atributos:
       this.form.get('extenderPlan')?.setValue(false);
       this.form.get('cambiarPlan')?.setValue(false);
@@ -118,16 +122,19 @@ export class CrearEditarUsuarioComponent implements OnInit{
   }
 
   submit(){
+    //Se habilitan todos los campos al momento de enviarlo
+    this.form.enable();
     if(this.form.valid){
       if(this.data.mode === 'editar'){
-        this.userService.crearPersona(this.form.value)
+        console.log(this.form.value)
+        this.userService.actualizarPersona(this.form.value)
           .subscribe(
             () => {
               this.dialogRef.close();
             }
           );
       }else{
-        this.userService.actualizarPersona(this.form.value)
+        this.userService.crearPersona(this.form.value)
           .subscribe(
             () => {
               this.dialogRef.close();
@@ -139,6 +146,7 @@ export class CrearEditarUsuarioComponent implements OnInit{
 
   buildForm(){
     this.form = this.fb.group({
+      id: [''],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
@@ -150,6 +158,9 @@ export class CrearEditarUsuarioComponent implements OnInit{
       idTipoDocumento: ['', Validators.required],
       idPlan: ['', Validators.required],
       idRol: ['', Validators.required],
+      idUsuario: [''],
+      idPlanUsuario:[''],
+      idRolUsuario:[''],
       extenderPlan: [false],
       cambiarPlan: [false],
       cambiarRol: [false],
