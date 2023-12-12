@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit{
                this.router.navigate(['user/changePsswd'])
             }
             else{
-              if(this.userInfo.roles[0].nombreRol === 'Miemrbo'){
+              if(this.userInfo.roles[0].nombreRol === 'Miembro'){
                 this.router.navigate(['miembro/dashBoard'])
               }
               else if(this.userInfo.roles[0].nombreRol === 'Admin'){

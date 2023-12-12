@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <select class="form-select form-select-sm" aria-label="Small select example" (change)="mostrarTarjeta($event)">
+      <option *ngFor="let opcion of opciones" [value]="opcion.id">{{ opcion.nombre }}</option>
+    </select>
+  </div>
+  
+  <div class="container mt-3" *ngIf="seleccionActual == 1">
+    <mat-card>
+      <h1 class="text-center"><strong>Entrenamiento</strong></h1>
+      <mat-card-content>
+        <app-mis-entrenamientos></app-mis-entrenamientos>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div class="container mt-3" *ngIf="seleccionActual == 2">
+    <mat-card>
+      <h1 class="text-center"><strong>Otro</strong></h1>
+      <mat-card-content>
+        Estamois trabajando en ello
+        <!-- <app-usuarios></app-usuarios> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

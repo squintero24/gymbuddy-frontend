@@ -49,7 +49,7 @@ export class CambioPsswComponent implements OnInit{
           const roles = res.roles?.map((rol:RolesDto) => rol.nombreRol)
           localStorage.setItem('userData', JSON.stringify(res));
           localStorage.setItem('roles', roles);
-          if(this.userInfo.roles[0].nombreRol === 'Miemrbo'){
+          if(this.userInfo.roles[0].nombreRol === 'Miembro'){
             this.router.navigate(['miembro/dashBoard'])
           }
           else if(this.userInfo.roles[0].nombreRol === 'Admin'){
