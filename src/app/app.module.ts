@@ -47,9 +47,10 @@ import {DatePipe} from "@angular/common";
 import { ViewPlanesComponent } from './admin/component/planes/view-planes/view-planes.component';
 import { ViewEntrenamientoComponent } from './admin/component/entrenamiento/view-entrenamiento/view-entrenamiento.component';
 import {MatRadioModule} from "@angular/material/radio";
-import { ViewUsuarioComponent } from './admin/component/usuarios/view-usuario/view-usuario.component';
 import { MiembroDashboardComponent } from './public/miembro-dashboard/miembro-dashboard.component';
 import { MisEntrenamientosComponent } from './public/miembro-dashboard/component/entrenamientos/mis-entrenamientos.component';
+import { ViewUsuarioComponent } from './admin/component/usuarios/view-usuario/view-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +67,10 @@ import { MisEntrenamientosComponent } from './public/miembro-dashboard/component
     CrearEditarPlanComponent,
     CrearEditarEntrenamientoComponent,
     ViewPlanesComponent,
-    ViewEntrenamientoComponent
+    ViewEntrenamientoComponent,
+    ViewUsuarioComponent,
+    MiembroDashboardComponent,
+    MisEntrenamientosComponent
   ],
   imports: [
     HttpClientModule,
@@ -96,7 +100,7 @@ import { MisEntrenamientosComponent } from './public/miembro-dashboard/component
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
   ],
   providers: [
     SnackbarService,
